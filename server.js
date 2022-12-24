@@ -3,10 +3,12 @@ const app = express();
 const router = require("./routes");
 const db = require("./config/db");
 const cors = require("cors");
+const { createServer } = require("http");
 // const cookieParser = require("cookie-parser");
 
 //seed
 const seed = require("./seed");
+const httpServer = createServer(app);
 
 // parsing middleware
 app.use(express.json());
@@ -38,7 +40,7 @@ db.sync({ force: true })
     return seed();
   })
   .then(() =>
-    app.listen(process.env.PORT || 3001, () =>
+    httpServer.listen(process.env.PORT || 3001, () =>
       console.log("Servidor escuchando en el puerto")
     )
   )
