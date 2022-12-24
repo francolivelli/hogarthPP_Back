@@ -38,7 +38,7 @@ db.sync({ force: true })
     return seed();
   })
   .then(() =>
-    app.listen(process.env.PORT || 3000, () =>
+    app.listen(process.env.PORT || 3001, () =>
       console.log("Servidor escuchando en el puerto")
     )
   )
