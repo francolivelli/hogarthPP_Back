@@ -38,6 +38,8 @@ db.sync({ force: true })
     return seed();
   })
   .then(() =>
-    app.listen(5432, () => console.log("Servidor escuchando en el puerto 5432"))
+    app.listen(process.env.PORT || 3000, () =>
+      console.log("Servidor escuchando en el puerto")
+    )
   )
   .catch(console.error);
